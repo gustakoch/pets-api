@@ -1,0 +1,5 @@
+gesdinet_jwt_refresh_token:
+    ttl: 86400
+    user_identity_field: email
+    user_provider: App\User\Infrastructure\Security\UserProvider
+    token_parameter_name: refreshToken

@@ -1,0 +1,24 @@
+api_login_check:
+    path: /api/v1/auth/login
+
+gesdinet_jwt_refresh_token:
+    path: /api/v1/auth/token-refresh
+    methods: POST
+
+veterinarian_controller:
+    resource:
+        path: ../src/Veterinarian/Infrastructure/Http/Controller/
+        namespace: App\Veterinarian\Infrastructure\Http\Controller
+    type: attribute
+
+pet_controller:
+    resource:
+        path: ../src/Pet/Infrastructure/Http/Controller/
+        namespace: App\Pet\Infrastructure\Http\Controller
+    type: attribute
+
+user_controller:
+    resource:
+        path: ../src/User/Infrastructure/Http/Controller/
+        namespace: App\User\Infrastructure\Http\Controller
+    type: attribute

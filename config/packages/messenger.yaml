@@ -1,0 +1,21 @@
+when@local:
+    framework:
+        messenger:
+            buses:
+                messenger.bus.default:
+                    default_middleware: allow_no_handlers
+            transports:
+                send_email:
+                    dsn: "%env(MESSENGER_TRANSPORT_DSN)%"
+                    retry_strategy:
+                        max_retries: 0
+                    options:
+                        exchange:
+                            name: send_email_exchange
+                        queues:
+                            send_email_%env(APP_ENV)%:
+                                binding_keys:
+                                    - send_email_exchange
+
+            routing:
+                'App\Notification\Infrastructure\Message\SendEmail': send_email

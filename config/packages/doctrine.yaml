@@ -1,0 +1,40 @@
+doctrine:
+    dbal:
+        default_connection: default
+        connections:
+            default:
+                url: '%env(resolve:DATABASE_URL)%'
+
+        types:
+            permissions: App\User\Infrastructure\Doctrine\Type\PermissionsType
+    orm:
+        default_entity_manager: default
+        entity_managers:
+            default:
+                connection: default
+                naming_strategy: doctrine.orm.naming_strategy.underscore_number_aware
+                auto_mapping: true
+                dql:
+                    string_functions:
+                        JSONB_CONTAINS: Scienta\DoctrineJsonFunctions\Query\AST\Functions\Postgresql\JsonbContains
+                mappings:
+                    Veterinarian:
+                        is_bundle: false
+                        type: attribute
+                        dir: '%kernel.project_dir%/src/Veterinarian/Domain'
+                        prefix: 'App\Veterinarian\Domain'
+                        alias: App
+                    Pet:
+                        is_bundle: false
+                        type: attribute
+                        dir: '%kernel.project_dir%/src/Pet/Domain'
+                        prefix: 'App\Pet\Domain'
+                        alias: App
+                    User:
+                        is_bundle: false
+                        type: attribute
+                        dir: '%kernel.project_dir%/src/User/Domain'
+                        prefix: 'App\User\Domain'
+                        alias: App
+        auto_generate_proxy_classes: true
+        enable_lazy_ghost_objects: true
