@@ -18,9 +18,11 @@ use App\Shared\Infrastructure\QueryHandler\QueryExecutor;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Gesdinet\JWTRefreshTokenBundle\Model\RefreshTokenManagerInterface;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 #[Route('/api/v1/auth', name: 'auth_')]
 #[OA\Tag(name: 'Auth')]
+#[IsGranted('IS_AUTHENTICATED_FULLY')]
 final readonly class SecurityController
 {
     public function __construct(

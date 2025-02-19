@@ -4,13 +4,14 @@ declare(strict_types=1);
 
 namespace App\Pet\Application\Command\Pet;
 
-use OpenApi\Attributes as OA;
 use Symfony\Component\Uid\Ulid;
 use App\Pet\Domain\ValueObject\PetId;
 use App\Pet\Domain\ValueObject\Specie;
+use App\Pet\Application\Validator\PetDoesNotExist;
 use Symfony\Component\Serializer\Attribute\Ignore;
 use Symfony\Component\Validator\Constraints as Assert;
 use App\Veterinarian\Domain\ValueObject\VeterinarianId;
+use OpenApi\Attributes as OA;
 
 final class Update
 {
@@ -38,6 +39,7 @@ final class Update
 
     public function __construct(
         #[Assert\NotBlank]
+        #[PetDoesNotExist]
         #[Ignore]
         public PetId $id,
         string $specie,

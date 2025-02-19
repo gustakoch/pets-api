@@ -14,7 +14,7 @@ final class Handler
 {
     public function __construct(
         private readonly PetRepository $repository,
-        private readonly PetService $petService,
+        private readonly PetService $service,
         private readonly Validator $validator,
     ) {
     }
@@ -22,7 +22,15 @@ final class Handler
     public function create(Create $create): Pet
     {
         $this->validator->validate($create);
-        $pet = $this->petService->create($create);
+        $veterinarians = $this->service->validateVeterinarians($create->veterinarianIds);
+        $pet = Pet::create(
+            $create->name,
+            $create->specie,
+            $create->birthDate,
+            $create->color,
+            $create->description,
+            $veterinarians,
+        );
         $this->repository->save($pet);
 
         return $pet;
@@ -31,7 +39,16 @@ final class Handler
     public function update(Update $update): Pet
     {
         $this->validator->validate($update);
-        $pet = $this->petService->update($update);
+        $pet = $this->repository->findOneByIdOrNull($update->id);
+        $veterinarians = $this->service->validateVeterinarians($update->veterinarianIds);
+        $pet->update(
+            $update->name,
+            $update->specie,
+            $update->birthDate,
+            $update->color,
+            $update->description,
+            $veterinarians,
+        );
         $this->repository->save($pet);
 
         return $pet;
