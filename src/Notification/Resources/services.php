@@ -5,10 +5,9 @@ declare(strict_types=1);
 namespace App\Notification\Resources;
 
 use App\Notification\Infrastructure\MessageHandler\SendEmailHandler;
+use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 
 use function Symfony\Component\DependencyInjection\Loader\Configurator\service;
-
-use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 
 return static function (ContainerConfigurator $configurator): void {
     $services = $configurator->services()
