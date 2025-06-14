@@ -13,12 +13,12 @@ final class VaccinationView implements View, \JsonSerializable
     public Money $price;
 
     public function __construct(
-        public string $publicId,
+        public string $id,
         public string $name,
         public ?string $description,
-        public string $petPublicId,
+        public string $petId,
         public string $petName,
-        public string $veterinarianPublicId,
+        public string $veterinarianId,
         public string $veterinarianName,
         public VaccineType $type,
         public \DateTime $applicationDate,
@@ -33,7 +33,7 @@ final class VaccinationView implements View, \JsonSerializable
     public function jsonSerialize(): array
     {
         return [
-            'publicId' => $this->publicId,
+            'id' => $this->id,
             'name' => $this->name,
             'description' => $this->description,
             'type' => $this->type,
@@ -50,7 +50,7 @@ final class VaccinationView implements View, \JsonSerializable
     private function buildPetView(): array
     {
         return [
-            'publicId' => $this->petPublicId,
+            'id' => $this->petId,
             'name' => $this->petName,
         ];
     }
@@ -58,7 +58,7 @@ final class VaccinationView implements View, \JsonSerializable
     private function buildVeterinarianView(): array
     {
         return [
-            'publicId' => $this->veterinarianPublicId,
+            'id' => $this->veterinarianId,
             'name' => $this->veterinarianName,
         ];
     }

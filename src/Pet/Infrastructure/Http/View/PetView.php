@@ -43,6 +43,7 @@ final class PetView implements View, \JsonSerializable
             return [
                 'id' => $veterinarian->getId()->publicId(),
                 'name' => $veterinarian->getName(),
+                'phone' => $veterinarian->getPhone(),
             ];
         })->toArray();
     }

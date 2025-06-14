@@ -36,6 +36,12 @@ final readonly class SecurityController
     ) {
     }
 
+    #[Route('/token-check', name: 'token-check', methods: ['GET'])]
+    public function checkToken(): JsonResponse
+    {
+        return $this->response->view();
+    }
+
     #[Route('/user-profile', name: 'user_profile', methods: ['GET'], stateless: false)]
     #[OA\Put(summary: 'User Profile')]
     #[OA\Response(response: 200, description: 'User Profile')]

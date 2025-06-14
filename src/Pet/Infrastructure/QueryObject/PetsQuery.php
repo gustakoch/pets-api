@@ -35,7 +35,7 @@ final class PetsQuery implements QueryObject
                 birthDate: $pet->getBirthDate(),
                 color: $pet->getColor(),
                 description: $pet->getDescription(),
-                veterinarians: $pet->getVeterinarians()
+                veterinarians: $pet->getVeterinarians(),
             ),
             $pets
         );

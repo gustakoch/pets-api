@@ -38,8 +38,8 @@ final readonly class PetController
 
     #[Route('', name: 'list', methods: ['GET'])]
     #[OA\Get(summary: 'List Pets')]
-    #[OA\Parameter(name: 'name', in: 'query', description: 'Filter by Name', required: false, schema: new OA\Schema(type: 'string'))]
-    #[OA\Parameter(name: 'specie', in: 'query', description: 'Filter by Specie', required: false, schema: new OA\Schema(
+    #[OA\Parameter(name: 'name', description: 'Filter by Name', in: 'query', required: false, schema: new OA\Schema(type: 'string'))]
+    #[OA\Parameter(name: 'specie', description: 'Filter by Specie', in: 'query', required: false, schema: new OA\Schema(
         type: 'string',
         enum: [Specie::Cat, Specie::Dog, Specie::Rabbit, Specie::Hamster, Specie::Bird, Specie::Fish, Specie::Turtle, Specie::GuineaPig]
     ))]

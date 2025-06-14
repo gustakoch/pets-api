@@ -38,4 +38,5 @@ docker-compose.yml
 
 ###> others ###
 .DS_Store
+.idea
 ###< vs-code ###

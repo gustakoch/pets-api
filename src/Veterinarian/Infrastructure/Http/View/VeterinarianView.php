@@ -11,7 +11,7 @@ final class VeterinarianView implements View, \JsonSerializable
     public AddressView $address;
 
     public function __construct(
-        public string $publicId,
+        public string $id,
         public string $name,
         public ?string $email,
         public ?string $phone,
@@ -39,7 +39,7 @@ final class VeterinarianView implements View, \JsonSerializable
     public function jsonSerialize(): array
     {
         return [
-            'publicId' => $this->publicId,
+            'id' => $this->id,
             'name' => $this->name,
             'email' => $this->email,
             'phone' => $this->phone,

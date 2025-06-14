@@ -102,6 +102,11 @@ class Veterinarian
         return $this->name;
     }
 
+    public function getPhone(): ?string
+    {
+        return $this->phone;
+    }
+
     public function getId(): VeterinarianId
     {
         return $this->id;
