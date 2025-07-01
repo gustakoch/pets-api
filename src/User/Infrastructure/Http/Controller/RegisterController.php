@@ -35,14 +35,11 @@ final readonly class RegisterController
     public function create(Register $register): JsonResponse
     {
         try {
-            $user = $this->em->wrapInTransaction(
+            $this->em->wrapInTransaction(
                 fn () => $this->handler->register($register)
             );
 
-            return $this->response->view(
-                $this->query->execute(new UserQuery($user->getId())),
-                201
-            );
+            return $this->response->view([], 201);
         } catch (\Exception $exception) {
             return $this->response->error($exception);
         }

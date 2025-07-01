@@ -11,6 +11,7 @@ use App\Pet\Domain\ValueObject\VaccineType;
 use App\Pet\Domain\ValueObject\VaccinationId;
 use App\Pet\Application\Validator\PetDoesNotExist;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Serializer\Attribute\Ignore;
 use App\Veterinarian\Domain\ValueObject\VeterinarianId;
 use App\Pet\Application\Validator\VaccinationDoesNotExist;
 use App\Pet\Application\Validator\VeterinarianDoesNotExist;
@@ -50,6 +51,7 @@ final class Update
     public function __construct(
         #[Assert\NotBlank]
         #[VaccinationDoesNotExist]
+        #[Ignore]
         public VaccinationId $id,
         string $petId,
         string $veterinarianId,

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Veterinarian\Application\Command\Veterinarian;
 
+use App\Pet\Application\Validator\VeterinarianDoesNotExist;
 use Symfony\Component\Serializer\Attribute\Ignore;
 use Symfony\Component\Validator\Constraints as Assert;
 use App\Veterinarian\Domain\ValueObject\VeterinarianId;
@@ -27,6 +28,7 @@ final class Update
 
     public function __construct(
         #[Assert\NotBlank]
+        #[VeterinarianDoesNotExist]
         #[Ignore]
         public VeterinarianId $id,
     ) {
